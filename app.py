@@ -7,7 +7,7 @@ app.secret_key = "saflñdsfldkiijukiekswdx sfdafsafgrerjtretrt68545375473fefe432
 
 @app.route("/")
 def inicio():
-    usuarios = Usuario.get_all
+    usuarios = Usuario.get_all()
 
     return render_template("index.html", usuarios=usuarios)
 
@@ -30,17 +30,55 @@ def Crear_usuario():
 
         if not user_id:
             flash("No se pudo crear la cuenta.", "error")
-            return redirect(url_for("inicio"))
+            return redirect("/")
 
     except ValueError as error:
         flash(str(error), "error")
-        return redirect(url_for("inicio"))
+        return redirect("/")
 
-    return redirect(url_for("inicio")), flash("Cuenta creada correctamente", "success")
+    return redirect("/"), flash("Cuenta creada correctamente", "success")
 
-@app.route("/Editar", methods=['POST'])
-def editar():
+@app.route("/usuario")
+def usuario_html():
+    render_template("usuario.html")
+
+@app.route("/usuario/<int:user_id>")
+def usuario(user_id):
+
     datos = {
-        
+        "id": user_id
     }
 
+    usuario = Usuario.get_by_id(datos)
+
+    return render_template("usuario.html", usuario=usuario)
+
+@app.route("/editar/<int:user_id>")
+def editar_html(user_id):
+    datos = {
+        'id': user_id
+    }
+    usuario = Usuario.get_by_id(datos)
+    return render_template("edicion.html", usuario = usuario)
+
+@app.route("/Editar/<int:user_id>", methods=['POST'])
+def editar(user_id):
+    data = {
+        "id": user_id,
+        "nombre": request.form["nombre"],
+        "apellido": request.form["apellido"],
+        "email": request.form["email"]
+    }
+    Usuario.actualizar(data)
+    return redirect(f"/usuario/{user_id}")
+
+@app.route("/borrar/<int:user_id>")
+def borrar(user_id):
+    datos = {
+        "id": user_id
+    }
+    Usuario.borrar(datos)
+    return redirect("/")
+
+if __name__ == "__main__":
+    app.run(debug=True)

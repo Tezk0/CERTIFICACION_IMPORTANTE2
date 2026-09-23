@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Usuario</title>
+</head>
+<body>
+    <h1>Usuario {{ usuario.id }}</h1>
+    <div border="1">
+        <p>Nombre completo: {{ usuario.nombre }} {{ usuario.apellido }}</p>
+        <p>E-mail: {{ usuario.email }}</p>
+        <p>Fecha Creación: {{ usuario.created_at.strftime('%m/%d/%Y') }}</p>
+        <p>Fecha Actualizacion: {{ usuario.updated_at.strftime('%m/%d/%Y') }}</p>
+    </div>
+
+    <a href="/editar/{{ usuario.id }}">Editar</a>
+    <a href="/borrar/{{ usuario.id }}">Borrar</a>
+</body>
+</html>

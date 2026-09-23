@@ -7,10 +7,11 @@
 </head>
 <body>
     <h1>Usuarios</h1>
-    <a href="">Nuevo Usuario</a>
+    <a href="/usuario_nuevo">Nuevo Usuario</a>    
 
     <table border="1">
-    {% for usuario in usuarios %}
+    
+    <thead>
         <tr>
             <th>id</th>
             <th>Nombre completo</th>
@@ -18,23 +19,28 @@
             <th>Fecha Creación</th>
             <th>Acciones</th>
         </tr>
-        <tr>
+    </thead>
+    <tbody>
+    {% for usuario in usuarios %}   
+        <td>
             {{ usuario.id }}
-        </tr>
-        <tr>
+        </td>
+        <td>
             {{ usuario.nombre }} {{ usuario.apellido }}
-        </tr>
-        <tr>
+        </td>
+        <td>
             {{ usuario.email }}
-        </tr>
-        <tr>
-            *-+usuario.created_at.strftime('%m/%d/%Y') }} 
-        </tr>
-        <tr>
-            <a href="">Ver</a>
-            <a href="">Editar</a>
-            <a href="">Borrar</a>
-        </tr>
+        </td>
+        <td>
+            {{ usuario.created_at.strftime('%m/%d/%Y') }} 
+        </td>
+    
+        <td>
+            <a href="/usuario/{{ usuario.id }}">Ver</a>
+            <a href="/editar/{{ usuario.id }}">Editar</a>
+            <a href="/borrar/{{ usuario.id }}">Borrar</a>
+        </td>
+    </tbody>
     {% endfor %}
     </table>
 </body>
