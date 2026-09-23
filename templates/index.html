@@ -3,21 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Comic+Relief:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
     <title>Usuarios</title>
 </head>
 <body>
-    <h1>Usuarios</h1>
+    <h1 class="titulodelindexsigma">Usuarios</h1>
     <a href="/usuario_nuevo">Nuevo Usuario</a>    
 
-    <table border="1">
-    
+    <table class="tablasigmatoilet">
     <thead>
         <tr>
-            <th>id</th>
+            <th class="tablainicio">id</th>
             <th>Nombre completo</th>
             <th>E-mail</th>
             <th>Fecha Creación</th>
-            <th>Acciones</th>
+            <th class="tablafin">Acciones</th>
         </tr>
     </thead>
     <tbody>

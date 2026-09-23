@@ -1,0 +1,41 @@
+.comic-relief-regular {
+  font-family: "Comic Relief", system-ui;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.comic-relief-bold {
+  font-family: "Comic Relief", system-ui;
+  font-weight: 700;
+  font-style: normal;
+}
+
+body{
+  font-family: "Comic Relief", system-ui;
+}
+
+.tablasigmatoilet {
+
+  border-collapse: separate;
+  border-spacing: 0;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 3px solid #000000;
+  margin: 0px auto;
+}
+.tablasigmatoilet thead{
+  background-color: rgb(172, 172, 172);
+}
+
+.tablasigmatoilet th,
+.tablasigmatoilet td {
+  border-left:3px solid #000000;
+  border-bottom: none;
+}
+
+.titulodelindexsigma{
+  display: inline-flex;
+  margin: 0px center;
+  
+
+}
