@@ -4,24 +4,26 @@ DB_NAME = 'usuarios_cert2'
 class Usuario:
     def __init__(self, data):
         id = data['id']
-        #si da error, pongale data.get, asi salta al siguient e y no da error
-        nombre_completo = data['nombre_completo']
+        #si da error, pongale data.get, asi salta al siguiente y no da error
+        nombre = data['nombre']
+        apellido = data['apellido']
         email = data['email']
         created_at = data['created_at']
         updated_at = data['updated_at']
 
     @classmethod
     def crear(cls,data):
-        query = "INSERT INTO usuarios (nombre_completo, email) VALUES (%(nombre_completo)s,%(email)s);"
+        query = "INSERT INTO usuarios (nombre, apellido, email) VALUES (%(nombre)s, %(apellido)s,%(email)s);"
         # %(dato)s = sentencia preparada
         return connectToMySQL(DB_NAME).query_db(query, data)
-
+ 
     @classmethod
     def actualizar(cls, data):
       query = """
          UPDATE usuarios
-         SET nombre_completo = %(nombre_completo)s,
-             email = %(email)s,
+         SET nombre_completo = %(nombre)s,
+            apellido = %(apellido)s,
+            email = %(email)s,
          WHERE id = %(id)s;
       """
       resultado = connectToMySQL(DB_NAME).query_db(query, data)

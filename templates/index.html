@@ -10,6 +10,7 @@
     <a href="">Nuevo Usuario</a>
 
     <table border="1">
+    {% for usuario in usuarios %}
         <tr>
             <th>id</th>
             <th>Nombre completo</th>
@@ -21,7 +22,7 @@
             {{ usuario.id }}
         </tr>
         <tr>
-            {{ usuario.nombre_completo }}
+            {{ usuario.nombre }} {{ usuario.apellido }}
         </tr>
         <tr>
             {{ usuario.email }}
@@ -29,6 +30,12 @@
         <tr>
             {{ usuario.created_at.strftime('%m/%d/%Y') }}
         </tr>
+        <tr>
+            <a href="">Ver</a>
+            <a href="">Editar</a>
+            <a href="">Borrar</a>
+        </tr>
+    {% endfor %}
     </table>
 </body>
 </html>
